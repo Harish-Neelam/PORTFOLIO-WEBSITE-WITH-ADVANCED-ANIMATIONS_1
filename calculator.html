@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style3.css">
+    <title>Vehicle Affordability Calculator</title>
+</head>
+<body>
+    <div class="background-slideshow">
+        <div class="background-image" style="background-image: url('car1.jpeg');"></div>
+        <div class="background-image" style="background-image: url('car2.jpeg');"></div>
+        <div class="background-image" style="background-image: url('car3.jpeg');"></div>
+    </div>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="log.html">Login</a></li>
+                <li><a href="signin.html">Sign In</a></li>
+                <li><a href="calculator.html">Calculator</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="calculator">
+            <h2 style="color: hwb(0 100% 0%);">Vehicle Affordability Calculator</h2>
+
+            <form id="affordabilityForm" onsubmit="event.preventDefault(); calculateAffordability();">
+                <label for="annualIncome" style="color: hwb(0 100% 0%);">Annual Income:</label>
+                <input type="number" id="annualIncome" required>
+
+                <label for="vehiclePrice" style="color: hwb(0 100% 0%);">Vehicle Price:</label>
+                <input type="number" id="vehiclePrice" required>
+
+                <label for="loanTerm" style="color: hwb(0 100% 0%);">Loan Term (years):</label>
+                <input type="number" id="loanTerm" required>
+
+                <button type="submit">Calculate</button>
+            </form>
+            <div id="result-container" style="color: rgba(0,0,0,0.7)"></div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Vehicle Affordability Calculator. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function calculateAffordability() {
+            const annualIncome = parseFloat(document.getElementById('annualIncome').value);
+            const vehiclePrice = parseFloat(document.getElementById('vehiclePrice').value);
+            const loanTerm = parseInt(document.getElementById('loanTerm').value);
+            
+            const downPayment = 0.2 * vehiclePrice; // 20% of the vehicle price as down payment
+            const monthlyIncome = annualIncome / 12;
+            const monthlyExpenseLimit = 0.1 * monthlyIncome; // 10% of monthly income for car expenses
+
+            const loanAmount = vehiclePrice - downPayment;
+            const monthlyEMI = loanAmount / (loanTerm * 12);
+
+            const insuranceEstimate = 0.01 * vehiclePrice / 12; // Rough estimate for monthly insurance
+            const fuelEstimate = 100; // Example fixed monthly fuel cost, adjust as necessary
+
+            const totalMonthlyCarExpense = monthlyEMI + insuranceEstimate + fuelEstimate;
+
+            const resultContainer = document.getElementById('result-container');
+            resultContainer.innerHTML = `<h2>Result</h2>
+                <p>Vehicle Price: $${vehiclePrice.toFixed(2)}</p>
+                <p>Down Payment: $${downPayment.toFixed(2)}</p>
+                <p>Monthly EMI: $${monthlyEMI.toFixed(2)}</p>
+                <p>Insurance Estimate: $${insuranceEstimate.toFixed(2)}</p>
+                <p>Fuel Estimate: $${fuelEstimate.toFixed(2)}</p>
+                <p>Total Monthly Car Expense: $${totalMonthlyCarExpense.toFixed(2)}</p>
+                <p>Monthly Expense Limit (10% of monthly income): $${monthlyExpenseLimit.toFixed(2)}</p>
+                <p>Can you afford it? ${totalMonthlyCarExpense <= monthlyExpenseLimit ? 'Yes' : 'No'}</p>`;
+        }
+    </script>
+</body>
+</html>

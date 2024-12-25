@@ -1,0 +1,227 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+
+    margin: 0;
+    padding: 0;
+    background-color: #080808;
+    color: #333;
+}
+.background-slideshow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+}
+
+.background-image:nth-child(1) {
+    animation: slideShow 18s infinite;
+}
+
+.background-image:nth-child(2) {
+    animation: slideShow 18s infinite 6s;
+}
+
+.background-image:nth-child(3) {
+    animation: slideShow 18s infinite 12s;
+}
+
+@keyframes slideShow {
+    0% { opacity: 0; }
+    33% { opacity: 1; }
+    66% { opacity: 0; }
+    100% { opacity: 0; }
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: #fff7f7;
+}
+
+header {
+   background-color: #333;
+     color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Main content styles */
+main {
+    padding: 20px;
+}
+
+.hero {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #00c2a7;
+    color: #fff;
+}
+
+.hero h1 {
+    font-size: 2.5em;
+    margin: 0;
+}
+
+.hero p {
+    font-size: 1.2em;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #00c2a7;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.cta-button:hover {
+    background-color: #e0e0e0;
+}
+
+/* Features section */
+.features {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.features h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.feature-box {
+    display: inline-block;
+    width: 30%;
+    margin: 0 1.5%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.feature-box h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.feature-box p {
+    font-size: 1em;
+    color: #666;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
+    position:relative;
+    width: 100%;
+    bottom: 0;
+}
+
+/* Calculator section */
+.calculator {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.calculator h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.calculator form {
+    display: flex;
+    flex-direction: column;
+}
+
+.calculator label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.calculator input {
+    margin-bottom: 15px;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.calculator button {
+    padding: 10px;
+    font-size: 1em;
+    background-color: #00c2a7;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.calculator button:hover {
+    background-color: #007a6e;
+}
+
+#result-container {
+    margin-top: 20px;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#result-container h2 {
+    margin-top: 0;
+}
+
+#result-container p {
+    margin: 5px 0;
+}
